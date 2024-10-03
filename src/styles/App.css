@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  padding-top: 60px; /* Adjust based on your header height */
+  padding-bottom: 60px; /* Adjust based on your footer height */
+}
+
+@media (min-width: 769px) {
+  .app-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  .app-container {
+    padding: 0 3rem;
+  }
+}
+
+header {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  text-decoration: none;
+}
+
+.site-title h1 {
+  margin: 0;
+  color: #FFD700; /* This is a golden yellow color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Optional: adds a slight shadow for better visibility */
+}
+
+/* Ensure the yellow color is maintained in dark mode */
+.dark-mode .site-title h1 {
+  color: #FFD700;
+}
+
+.main-nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav ul li a, nav ul li button {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 1rem 0; /* Adjust top padding based on your header height */
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding: 60px 2rem 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-content {
+    max-width: 1400px;
+    padding: 60px 3rem 0;
+  }
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.divider {
+  height: 20px;
+  width: 1px;
+  background-color: #333;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode header {
+  background-color: #222;
+}
+
+.dark-mode footer {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark-mode .divider {
+  background-color: #fff;
+}
+
+.dark-mode a, 
+.dark-mode button,
+.dark-mode .site-title {
+  color: #fff;
+}
+
+.dark-mode .dropdown-menu {
+  background-color: #444;
+}
+
+.dark-mode .site-title {
+  color: #fff;
+}
+
+/* Add this to your existing App.css */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.article-preview {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.3s ease;
+}
+
+.article-preview:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.article-preview h3 {
+  margin-top: 0;
+}
+
+article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+article h2 {
+  color: #333;
+}
+
+article h3 {
+  color: #444;
+}
+
+article ul, article ol {
+  margin-bottom: 20px;
+}
+
+article li {
+  margin-bottom: 10px;
+}
+
+/* ... (other styles) */
+
+.dark-mode-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Light mode */
+.dark-mode-toggle button {
+  color: #000;
+}
+
+/* Dark mode */
+.dark-mode .dark-mode-toggle button {
+  color: #fff;
+}
+
+/* ... (other styles) */
