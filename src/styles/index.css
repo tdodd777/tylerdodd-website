@@ -49,13 +49,13 @@ code {
   color: inherit;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     color: var(--main-text-color);
-    background-color: #ffffff;
+    background-color: #1a1a1a;
   }
   a:hover {
-    color: #747bff;
+    color: #535bf2;
   }
   button {
     background-color: #f9f9f9;
@@ -67,7 +67,7 @@ code {
 :root {
   --main-font: 'JetBrains Mono', monospace;
   --main-bg-color: #ffffff;
-  --main-text-color: #131313;
+  --main-text-color: #333333;
   --link-hover-color: #535bf2;
   --button-bg-color: #1a1a1a;
   --button-hover-color: #646cff;

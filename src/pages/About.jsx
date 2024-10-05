@@ -12,7 +12,7 @@ function About() {
         <p>
           Hello! I'm Tyler Dodd, and this is my website. But what is this website for? In short, I have no idea. 
           I simply wanted to learn more about coding so decided to set out on standing this site up. Admittedly, 
-          I didn't think I'd get this far but here we are.
+          I didn't think I'd make it this far but here we are.
         </p>
         <p>
           I think I'll use it as an online place for me to provide updates on things, and continuously improve my technical skills.

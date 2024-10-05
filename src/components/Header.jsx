@@ -6,6 +6,7 @@ import { SunIcon, MoonIcon } from './Icons';
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
   const { isDarkMode, toggleTheme } = useTheme();
@@ -50,13 +51,20 @@ function Header() {
     };
   }, [dropdownRef]);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <header className="header">
+    <header className={`header ${isDarkMode ? 'dark-mode' : ''}`}>
       <div className="header-content">
         <Link to="/" className="home-link">
           <h1 className="full-name">Tyler Dodd</h1>
         </Link>
-        <nav className="main-nav">
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+          ☰
+        </button>
+        <nav className={`main-nav ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           <ul>
             <li 
               className="interests-dropdown" 
@@ -86,7 +94,7 @@ function Header() {
             <li><Link to="/contact" className="nav-link">Contact</Link></li>
             <li className="dark-mode-toggle">
               <button onClick={toggleTheme} aria-label="Toggle dark mode">
-                {isDarkMode ? <SunIcon /> : <MoonIcon />}
+                {isDarkMode ? <MoonIcon /> : <SunIcon />}
               </button>
             </li>
           </ul>

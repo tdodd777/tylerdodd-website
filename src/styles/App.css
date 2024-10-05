@@ -33,6 +33,22 @@ html, body, #root {
   }
 }
 
+@media (max-width: 768px) {
+  .app-container {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  .main-content {
+    margin-top: 60px;
+    padding: 0 0.5rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.3rem;
+  }
+}
+
 header {
   background-color: #f0f0f0;
   padding: 1rem;
@@ -112,6 +128,7 @@ nav ul li a, nav ul li button {
   background: none; /* Ensure no background is applied */
 }
 
+
 .main-content h2 {
   margin-top: 0;
   margin-bottom: 20px;
@@ -159,10 +176,43 @@ footer {
   background-color: #333;
 }
 
+/* Light mode styles (default) */
+body, .app-container, .main-content {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+
+header {
+  background-color: #f0f0f0;
+}
+
+footer {
+  background-color: #f0f0f0;
+  color: var(--main-text-color);
+}
+
+.divider {
+  background-color: var(--main-text-color);
+}
+
+a, button, .site-title {
+  color: var(--main-text-color);
+}
+
+.dropdown-menu {
+  background-color: #f9f9f9;
+}
+
 /* Dark mode styles */
 .dark-mode {
-  background-color: #333;
-  color: #fff;
+  --main-bg-color: #333;
+  --main-text-color: #fff;
+  --secondary-text-color: #ccc;
+}
+
+.dark-mode body, .dark-mode .app-container, .dark-mode .main-content {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 .dark-mode header {
@@ -186,10 +236,6 @@ footer {
 
 .dark-mode .dropdown-menu {
   background-color: #444;
-}
-
-.dark-mode .site-title {
-  color: #fff;
 }
 
 /* Add this to your existing App.css */
@@ -277,4 +323,41 @@ h2 {
 .app-container .main-content > div,
 .app-container .main-content > div > h2 {
   background: none !important;
+}
+
+.light-mode {
+  --main-bg-color: #ffffff;
+  --main-text-color: #333333;
+  --secondary-text-color: #666666;
+  --button-bg-color: #1a1a1a;
+}
+
+.light-mode body,
+.light-mode .app-container,
+.light-mode .main-content {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+
+.light-mode header {
+  background-color: #f0f0f0;
+}
+
+.light-mode footer {
+  background-color: #f0f0f0;
+  color: var(--main-text-color);
+}
+
+.light-mode .divider {
+  background-color: var(--main-text-color);
+}
+
+.light-mode a, 
+.light-mode button,
+.light-mode .site-title {
+  color: var(--main-text-color);
+}
+
+.light-mode .dropdown-menu {
+  background-color: #f9f9f9;
 }

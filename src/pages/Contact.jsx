@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/Contact.css';
 import { useTheme } from '../utils/ThemeContext';
+import { FaEnvelope } from 'react-icons/fa'; // Import the email icon
 
 function Contact() {
   const { isDarkMode } = useTheme();
   const [displayedEmail, setDisplayedEmail] = useState('');
+  const [showCopied, setShowCopied] = useState(false);
   const email = 'hello@tylerdodd.com';
   const typingSpeed = 150; // milliseconds per character
   const erasingSpeed = 50; // milliseconds per character
@@ -44,6 +46,7 @@ function Contact() {
     return () => clearTimeout(timeoutId);
   }, []);
 
+
   const canvasRef = useRef(null);
   const [gameRunning, setGameRunning] = useState(false);
 
@@ -58,6 +61,7 @@ function Contact() {
     isJumping: false,
   });
 
+
   const cactusRef = useRef({
     x: 800,
     y: 250,
@@ -65,7 +69,6 @@ function Contact() {
     height: 40,
     speed: 3,
   });
-
 
   const scoreRef = useRef(0);
   const highScoreRef = useRef(0);
@@ -88,6 +91,7 @@ function Contact() {
       }
     };
 
+
     const update = () => {
       if (!gameRunning) return;
 
@@ -104,6 +108,7 @@ function Contact() {
         dino.dy = 0;
         dino.isJumping = false;
       }
+
 
       // Update Cactus
       cactus.x -= cactus.speed;
@@ -173,6 +178,23 @@ function Contact() {
     };
   }, [gameRunning, isDarkMode]);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    const resizeCanvas = () => {
+      const containerWidth = canvas.parentElement.clientWidth;
+      canvas.width = Math.min(800, containerWidth - 20);
+      canvas.height = (canvas.width / 800) * 300;
+    };
+
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    return () => window.removeEventListener('resize', resizeCanvas);
+  }, []);
+
   const startGame = () => {
     // Reset Dino and Cactus to initial states
     dinoRef.current = {
@@ -198,9 +220,26 @@ function Contact() {
     setGameRunning(true);
   };
 
+  const copyEmailToClipboard = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setShowCopied(true);
+      setTimeout(() => setShowCopied(false), 3000);
+    }, (err) => {
+      console.error('Could not copy text: ', err);
+    });
+  };
+
   return (
     <div className={`contact-container ${isDarkMode ? 'dark-mode' : ''}`}>
-      <h2>Contact</h2>
+      <div className="contact-header">
+        <h2>
+          Contact
+          <button className="copy-email-button" onClick={copyEmailToClipboard} aria-label="Copy email">
+            <FaEnvelope />
+          </button>
+          {showCopied && <span className="copied-text">Copied!</span>}
+        </h2>
+      </div>
       <p>Email: <span className="typing-email">{displayedEmail}</span></p>
       <p>Idk what else to put here, so enjoy this game!</p>
       <p>Personal high score is 229 FWIW...</p>
@@ -227,5 +266,6 @@ function Contact() {
     </div>
   );
 }
+
 
 export default Contact;

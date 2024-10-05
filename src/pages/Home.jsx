@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Home.css';
+import RecentArticles from '../components/RecentArticles';
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
           Feel free to explore!
         </p>
       </div>
+      <RecentArticles />
     </div>
   );
 }

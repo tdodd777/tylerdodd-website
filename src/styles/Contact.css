@@ -59,3 +59,100 @@
   from, to { border-color: transparent; }
   50% { border-color: #ffffff; }
 }
+
+/* New styles for email icon and button */
+.contact-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Add this */
+}
+
+.contact-header h2 {
+  margin: 0; /* Remove default margin from h2 */
+  display: flex; /* Make h2 flex */
+  align-items: center; /* Align items vertically */
+}
+
+.copy-email-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem; /* Slightly reduced size to match title better */
+  color: #000;
+  transition: color 0.3s ease;
+  padding: 0; /* Remove padding */
+  margin-left: 10px; /* Add space between text and icon */
+  display: flex; /* Make button flex */
+  align-items: center; /* Align icon vertically */
+  outline: none; /* Add this line to remove the focus outline */
+}
+
+.copy-email-button:focus {
+  outline: none; /* Add this rule to ensure the outline is removed on focus */
+  color: #007bff; /* Change color on focus */
+}
+
+.copy-email-button:hover {
+  color: #007bff;
+}
+
+.dark-mode .copy-email-button {
+  color: #fff;
+}
+
+.dark-mode .copy-email-button:hover {
+  color: #4da6ff;
+}
+
+.dark-mode .copy-email-button:focus {
+  color: #4da6ff; /* Change color for dark mode */
+}
+
+.copied-text {
+  position: absolute;
+  left: 100%; /* Position it to the right of the header */
+  margin-left: 10px;
+  opacity: 0;
+  animation: fadeUpAndOut 3s ease-out;
+  font-size: 0.5em; /* Reduce font size by 50% */
+}
+
+@keyframes fadeUpAndOut {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+/* Dark mode styles for copied text */
+.dark-mode .copied-text {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 1rem;
+  }
+
+  .dino-game-canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact-header h2 {
+    font-size: 1.5rem;
+  }
+}

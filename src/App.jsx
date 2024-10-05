@@ -9,6 +9,8 @@ import Cooking from './pages/Cooking';
 import Technology from './pages/Technology';
 import Contact from './pages/Contact';
 import './styles/App.css';
+import Projects from './pages/Projects';
+import Project1 from './pages/project-articles/project1';
 
 function AppContent() {
   const { isDarkMode } = useTheme();
@@ -23,6 +25,8 @@ function AppContent() {
           <Route path="/interests/cooking" element={<Cooking />} />
           <Route path="/interests/technology" element={<Technology />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/interests/projects" element={<Projects />} />
+          <Route path="/interests/projects/project1" element={<Project1 />} />
         </Routes>
       </main>
       <Footer />
