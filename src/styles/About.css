@@ -1,0 +1,67 @@
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  min-height: calc(100vh - 80px); /* Adjust based on header/footer height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.bio {
+  text-align: justify;
+}
+
+.bio p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+}
+
+/* Dark mode styles */
+.dark-mode .about-container {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  height: 100%;
+}
+
+html, #root {
+  height: 100%;
+}
+
+.about-title {
+  margin-top: -20px; /* Adjust this value to move the title up or down */
+}

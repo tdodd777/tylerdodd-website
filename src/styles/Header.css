@@ -1,12 +1,13 @@
 .header {
   background-color: #f0f0f0;
   width: 100%;
-  padding: 1rem 5%;
+  padding: 0.5rem 2%; /* Reduced padding */
   font-family: 'JetBrains Mono', monospace;
   color: var(--main-text-color);
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   z-index: 1000;
 }
 
@@ -26,6 +27,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
+  padding-left: 10px; /* Add left padding */
 }
 
 .main-nav ul {
@@ -95,12 +97,13 @@
 
 @media (max-width: 768px) {
   .header-content {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* Change to row */
+    justify-content: space-between; /* Space between name and nav */
+    align-items: center; /* Center vertically */
   }
 
   .main-nav {
-    margin-top: 1rem;
+    margin-top: 0; /* Remove top margin */
     width: 100%;
   }
 
@@ -149,4 +152,24 @@
 
 .dark-mode-toggle button:hover {
   opacity: 0.8;
+}
+
+/* Dark mode styles for menu items */
+.dark-mode nav ul li a:hover,
+.dark-mode nav ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.dark-mode .dropdown-menu {
+  background-color: #2a2a2a;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .dropdown-item {
+  color: #fff;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

@@ -1,5 +1,5 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/ArticlePreview.css';
 
 function ArticlePreview({ title, description, date, imageUrl, link }) {
@@ -10,7 +10,8 @@ function ArticlePreview({ title, description, date, imageUrl, link }) {
         <h3>{title}</h3>
         <p className="article-date">{date}</p>
         <p className="article-description">{description}</p>
-        <Link to={link} className="read-more">Read More</Link>
+        <p className="extra-info">Click to read more!</p> {/* Extra info that appears on hover */}
+        <button className="read-more-button">Read More</button> {/* Button appears on hover */}
       </div>
     </div>
   );
