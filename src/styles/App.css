@@ -17,7 +17,7 @@ html, body, #root {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  padding-top: 80px; /* Increase this value to match your header height */
+  padding-top: 60px; /* Adjust this value based on your header height */
   padding-bottom: 60px; /* Adjust based on your footer height */
 }
 

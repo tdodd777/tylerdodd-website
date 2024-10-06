@@ -28,7 +28,25 @@ const Project1 = () => {
           <img src={projectLogo} alt="Project Logo" className="project-logo" />
         </div>
       </div>
-      <section className="article-section">
+
+      {/* TL;DR Section */}
+      <section className="tldr-section">
+        <h2>TL;DR</h2>
+        <ul>
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#domain-setup">2. Domain Purchase and Setup</a></li>
+          <li><a href="#hosting">3. Hosting on DigitalOcean VPS</a></li>
+          <li><a href="#file-management">4. File Management and Uploads</a></li>
+          <li><a href="#version-control">5. Version Control and Collaboration</a></li>
+          <li><a href="#ai-tools">6. AI Tools for Development</a></li>
+          <li><a href="#issues">7. Issues and Resolutions</a></li>
+          <li><a href="#lessons-learned">8. Lessons Learned</a></li>
+          <li><a href="#conclusion">9. Conclusion</a></li>
+        </ul>
+      </section>
+
+      {/* Article Content */}
+      <section id="introduction" className="article-section">
         <h2>1. Introduction</h2>
         <p>
           Welcome to the first article on my new website. I figured it made sense to make the first post about why and how I went about standing up a website. In truth, there wasn't one definitive reason to stand up a website. At one point, I thought learning some HTML and CSS might be useful to do some freelance WebDev stuff or just know in general, so I turned to The Odin Project to learn more. I enjoyed learning some basics there, but didn't end up pursuing much more than that.
@@ -41,14 +59,14 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="domain-setup" className="article-section">
         <h2>2. Domain Purchase and Setup</h2>
         <h3>Namecheap for Domain Purchase</h3>
         <p>
           First thing's first, I needed to buy a domain name. This is the web address you type in the URL bar, i.e., the website name. After a quick googling and browsing a few Reddit posts, I landed on Namecheap.com to purchase my domain. As I'm sure you can guess, it wasn't all that much money, which was my only real criterion outside of having TylerDodd.com available. $11.28 for the domain name annually. And just like that, I owned TylerDodd.com.
         </p>
 
-        <h3>Cloudflare for DNS</h3>
+        <h3 id="dns">Cloudflare for DNS</h3>
         <p>
           Moving over to DNS, I chose to use Cloudflare. This is just an industry-best standard I'm familiar with, and it was suggested to me by GPT. What the hell is DNS and Cloudflare though? Let's take a step back.
         </p>
@@ -69,15 +87,31 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="hosting" className="article-section">
         <h2>3. Hosting on DigitalOcean VPS</h2>
         <h3>Hosting Options</h3>
         <ul className="expandable-list">
           {[
-            { id: 'shared', title: 'Shared Hosting', content: 'This is like renting an apartment where you share the building (server) with many other people (websites). Everyone uses the same pool of resources (storage, bandwidth, etc.). It\'s cheap, but if one neighbor throws a big party (uses a lot of resources), it might slow down the building\'s elevators or utilities for everyone else. Good for small sites with low traffic.' },
-            { id: 'vps', title: 'VPS (Virtual Private Server)', content: 'A VPS is like renting a condo in a larger building. While you still share the physical structure (the server) with others, your condo (virtual space) is completely private and sectioned off. You have dedicated resources, meaning no one else\'s activity affects your performance. It\'s more flexible, gives you control, and is a great option for growing websites.' },
-            { id: 'dedicated', title: 'Dedicated Server', content: 'This is like owning your own house. The entire property (server) is yours, and no one else can use its resources. It\'s the most powerful and customizable option, but also the most expensive. You\'re responsible for maintaining everything, just like a homeowner is responsible for repairs and upkeep. It\'s best for very large websites or businesses with lots of traffic and specific requirements.' },
-            { id: 'cloud', title: 'Cloud Hosting', content: 'Cloud hosting is like living in multiple condos in different buildings all over the city. Instead of one physical server, your website runs on a network of servers in different places (the cloud). If one server goes down or gets overloaded, another one takes over, keeping your site running smoothly. It\'s scalable, meaning you can easily increase or decrease the resources your website uses, which is ideal for websites with variable traffic.' }
+            { 
+              id: 'shared', 
+              title: 'Shared Hosting', 
+              content: 'This is like renting an apartment where you share the building (server) with many other people (websites). Everyone uses the same pool of resources (storage, bandwidth, etc.). It\'s cheap, but if one neighbor throws a big party (uses a lot of resources), it might slow down the building\'s elevators or utilities for everyone else. Good for small sites with low traffic.'
+            },
+            { 
+              id: 'vps', 
+              title: 'VPS (Virtual Private Server)', 
+              content: 'A VPS is like renting a condo in a larger building. While you still share the physical structure (the server) with others, your condo (virtual space) is completely private and sectioned off. You have dedicated resources, meaning no one else\'s activity affects your performance. It\'s more flexible, gives you control, and is a great option for growing websites.'
+            },
+            { 
+              id: 'dedicated', 
+              title: 'Dedicated Server', 
+              content: 'This is like owning your own house. The entire property (server) is yours, and no one else can use its resources. It\'s the most powerful and customizable option, but also the most expensive. You\'re responsible for maintaining everything, just like a homeowner is responsible for repairs and upkeep. It\'s best for very large websites or businesses with lots of traffic and specific requirements.'
+            },
+            { 
+              id: 'cloud', 
+              title: 'Cloud Hosting', 
+              content: 'Cloud hosting is like living in multiple condos in different buildings all over the city. Instead of one physical server, your website runs on a network of servers in different places (the cloud). If one server goes down or gets overloaded, another one takes over, keeping your site running smoothly. It\'s scalable, meaning you can easily increase or decrease the resources your website uses, which is ideal for websites with variable traffic.'
+            }
           ].map(section => (
             <li key={section.id}>
               <button className="expand-button" onClick={() => toggleSection(section.id)}>
@@ -96,7 +130,7 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="file-management" className="article-section">
         <h2>4. File Management and Uploads</h2>
         <h3>WinSCP for SSH File Transfers</h3>
         <p>
@@ -104,7 +138,7 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="version-control" className="article-section">
         <h2>5. Version Control and Collaboration</h2>
         <h3>GitHub as a Working Repository</h3>
         <p>
@@ -112,7 +146,7 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="ai-tools" className="article-section">
         <h2>6. AI Tools for Development</h2>
         <h3>ChatGPT 4.0, io mini, io Preview</h3>
         <p>
@@ -128,7 +162,7 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="issues" className="article-section">
         <h2>7. Issues and Resolutions</h2>
         <h3>Challenges Faced</h3>
         <p>
@@ -147,14 +181,14 @@ const Project1 = () => {
         </p>
       </section>
 
-      <section className="article-section">
+      <section id="lessons-learned" className="article-section">
         <h2>8. Lessons Learned</h2>
         <p>
           This has been a ridiculously challenging yet rewarding project to undertake. More than anything, I am glad to have a place to organize what I'm up to and reflect and discuss it as well. Not too sure if anyone will ever see the site really or not, aside from some friends and family I'll force to check it out, lol. But I'm happy I know more about what goes into standing a site like this up. I can't even begin to imagine how some of these big sites were created. I'm excited to learn more!
         </p>
       </section>
 
-      <section className="article-section conclusion-section">
+      <section id="conclusion" className="article-section conclusion-section">
         <h2>9. Conclusion</h2>
         <p>
           Reflecting on the journey of building this website, I've learned a ton and grown my understanding of web development, even with a limited background. Moving forward, I plan to keep experimenting with new features and make the site a place to document my projects and share updates. Feel free to reach out at <a href="mailto:hello@tylerdodd.com">hello@tylerdodd.com</a> if you're interested in hearing more!

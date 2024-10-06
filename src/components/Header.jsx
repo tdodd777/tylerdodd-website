@@ -5,93 +5,96 @@ import { useTheme } from '../utils/ThemeContext';
 import { SunIcon, MoonIcon } from './Icons';
 
 function Header() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const timeoutRef = useRef(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
-
-  const openDropdown = () => {
-    clearTimeout(timeoutRef.current);
-    setIsDropdownOpen(true);
-  };
-
-  const closeDropdown = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsDropdownOpen(false);
-    }, 500);
-  };
-
-  const toggleDropdown = () => {
-    if (isDropdownOpen) {
-      closeDropdown();
-    } else {
-      openDropdown();
-    }
-  };
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-toggle')) {
+        setIsMobileMenuOpen(false);
       }
     };
-  }, []);
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        closeDropdown();
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
       }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      setLastScrollY(currentScrollY);
     };
-  }, [dropdownRef]);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen(prevIsMobileMenuOpen => {
+      const newIsMobileMenuOpen = !prevIsMobileMenuOpen;
+      if (!newIsMobileMenuOpen) {
+        setIsDropdownOpen(false);
+      }
+      return newIsMobileMenuOpen;
+    });
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsDropdownOpen(false);
+  };
+
+  const toggleDropdown = (e) => {
+    e.preventDefault();
+    if (window.innerWidth <= 768) {
+      setIsDropdownOpen(prevIsDropdownOpen => !prevIsDropdownOpen);
+    }
   };
 
   return (
-    <header className={`header ${isDarkMode ? 'dark-mode' : ''}`}>
+    <header className={`header ${isHeaderVisible ? '' : 'header-hidden'}`}>
       <div className="header-content">
-        <Link to="/" className="home-link">
+        <Link to="/" className="home-link" onClick={closeMobileMenu}>
           <h1 className="full-name">Tyler Dodd</h1>
         </Link>
-        <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
-          ☰
-        </button>
         <nav className={`main-nav ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           <ul>
-            <li 
-              className="interests-dropdown" 
-              ref={dropdownRef}
-              onMouseEnter={openDropdown}
-              onMouseLeave={closeDropdown}
-            >
+            <li className="nav-item">
+              <Link to="/about" className="nav-link" onClick={closeMobileMenu}>About</Link>
+            </li>
+            <li className={`interests-dropdown ${isDropdownOpen ? 'open' : ''}`}>
               <a
                 href="#"
                 className="nav-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleDropdown();
-                }}
+                onClick={toggleDropdown}
                 aria-haspopup="true"
                 aria-expanded={isDropdownOpen}
               >
                 Interests
               </a>
-              <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
-                <Link to="/interests/cooking" className="dropdown-item">Cooking</Link>
-                <Link to="/interests/technology" className="dropdown-item">Technology</Link>
-                <Link to="/interests/projects" className="dropdown-item">Projects</Link>
-              </div>
+              <ul className="dropdown-menu">
+                <li><Link to="/interests/cooking" className="dropdown-item" onClick={closeMobileMenu}>Cooking</Link></li>
+                <li><Link to="/interests/technology" className="dropdown-item" onClick={closeMobileMenu}>Technology</Link></li>
+                <li><Link to="/interests/projects" className="dropdown-item" onClick={closeMobileMenu}>Projects</Link></li>
+              </ul>
             </li>
-            <li><Link to="/about" className="nav-link">About</Link></li>
-            <li><Link to="/contact" className="nav-link">Contact</Link></li>
+            <li className="nav-item">
+              <Link to="/contact" className="nav-link" onClick={closeMobileMenu}>Contact</Link>
+            </li>
             <li className="dark-mode-toggle">
               <button onClick={toggleTheme} aria-label="Toggle dark mode">
                 {isDarkMode ? <MoonIcon /> : <SunIcon />}
@@ -99,6 +102,9 @@ function Header() {
             </li>
           </ul>
         </nav>
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+          ☰
+        </button>
       </div>
     </header>
   );
