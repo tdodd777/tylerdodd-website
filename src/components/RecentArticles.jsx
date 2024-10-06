@@ -7,10 +7,10 @@ const getRecentArticles = () => {
   return [
     {
       id: 1,
-      title: "Cooking the Perfect Steak",
-      preview: "Learn the secrets to achieving a restaurant-quality steak at home.",
-      image: "/images/articles/cooking/perfect-steak/perfect-steak.jpg",
-      link: "/interests/cooking/perfect-steak"
+      title: "Baking the Perfect Sourdough Bread",
+      preview: "Learn the secrets to creating a delicious sourdough loaf at home.",
+      image: "/images/articles/cooking/sourdough-bread/sourdough-cooked.jpg",
+      link: "/interests/cooking/sourdough-bread"
     },
     {
       id: 2,

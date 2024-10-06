@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import './styles/App.css';
 import Projects from './pages/Projects';
 import Project1 from './pages/project-articles/project1';
+import SourdoughBread from './pages/cooking-articles/sourdough-bread';
 
 function AppContent() {
   const { isDarkMode } = useTheme();
@@ -27,6 +28,7 @@ function AppContent() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/interests/projects" element={<Projects />} />
           <Route path="/interests/projects/project1" element={<Project1 />} />
+          <Route path="/interests/cooking/sourdough-bread" element={<SourdoughBread />} />
         </Routes>
       </main>
       <Footer />

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
 import { useTheme } from '../utils/ThemeContext';
@@ -8,49 +8,9 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
-  const timeoutRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-toggle')) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
-
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        setIsHeaderVisible(false);
-      } else {
-        setIsHeaderVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(prevIsMobileMenuOpen => {
-      const newIsMobileMenuOpen = !prevIsMobileMenuOpen;
-      if (!newIsMobileMenuOpen) {
-        setIsDropdownOpen(false);
-      }
-      return newIsMobileMenuOpen;
-    });
+    setIsMobileMenuOpen(prevIsMobileMenuOpen => !prevIsMobileMenuOpen);
   };
 
   const closeMobileMenu = () => {
@@ -66,7 +26,7 @@ function Header() {
   };
 
   return (
-    <header className={`header ${isHeaderVisible ? '' : 'header-hidden'}`}>
+    <header className="header">
       <div className="header-content">
         <Link to="/" className="home-link" onClick={closeMobileMenu}>
           <h1 className="full-name">Tyler Dodd</h1>

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Cooking.css';
-import { perfectSteakImage } from './cooking-articles/perfect-steak';
+import { sourdoughBreadImage } from './cooking-articles/sourdough-bread';
 
 function Cooking() {
   const [hoveredArticle, setHoveredArticle] = useState(null);
@@ -21,11 +21,11 @@ function Cooking() {
   const articles = [
     {
       id: 1,
-      title: "Cooking the Perfect Steak",
-      preview: "Learn the secrets to achieving a restaurant-quality steak at home. Start with a high-quality cut, season well, and cook over high heat for a delicious, restaurant-worthy meal.",
-      slug: "perfect-steak",
-      image: perfectSteakImage,
-      className: "perfect-steak-article"
+      title: "Baking the Perfect Sourdough Bread",
+      preview: "Learn the secrets to creating a delicious sourdough loaf at home. From starter maintenance to scoring techniques, discover the art of sourdough baking.",
+      slug: "sourdough-bread",
+      image: "/images/articles/cooking/sourdough-bread/sourdough-sliced.jpg",
+      className: "sourdough-bread-article"
     },
     // Add more articles here as needed
   ];

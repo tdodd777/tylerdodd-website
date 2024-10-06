@@ -78,7 +78,6 @@ function Contact() {
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-
     const dino = dinoRef.current;
     const cactus = cactusRef.current;
 
@@ -90,7 +89,6 @@ function Contact() {
         dino.dy = -dino.jumpForce;
       }
     };
-
 
     const update = () => {
       if (!gameRunning) return;
@@ -108,7 +106,6 @@ function Contact() {
         dino.dy = 0;
         dino.isJumping = false;
       }
-
 
       // Update Cactus
       cactus.x -= cactus.speed;
@@ -164,17 +161,26 @@ function Contact() {
 
     update();
 
-    // Event Listener for Jump
+    // Event Listener for Jump (Keyboard)
     const handleKeydown = (e) => {
       if ((e.code === 'Space' || e.code === 'ArrowUp') && gameRunning) {
         jump();
       }
     };
 
+    // Event Listener for Mobile Jump
+    const handleTouchStart = (e) => {
+      if (gameRunning) {
+        jump();
+      }
+    };
+
     window.addEventListener('keydown', handleKeydown);
+    window.addEventListener('touchstart', handleTouchStart);
 
     return () => {
       window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('touchstart', handleTouchStart);
     };
   }, [gameRunning, isDarkMode]);
 
@@ -184,10 +190,17 @@ function Contact() {
 
     const resizeCanvas = () => {
       const containerWidth = canvas.parentElement.clientWidth;
-      canvas.width = Math.min(800, containerWidth - 20);
-      canvas.height = (canvas.width / 800) * 300;
-    };
+      const containerHeight = window.innerHeight - 100; // Adjust this value as needed
+      const aspectRatio = 800 / 300;
 
+      if (containerWidth / containerHeight > aspectRatio) {
+        canvas.width = containerHeight * aspectRatio;
+        canvas.height = containerHeight;
+      } else {
+        canvas.width = containerWidth;
+        canvas.height = containerWidth / aspectRatio;
+      }
+    };
 
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -196,27 +209,28 @@ function Contact() {
   }, []);
 
   const startGame = () => {
-    // Reset Dino and Cactus to initial states
+    const canvas = canvasRef.current;
+
     dinoRef.current = {
       x: 50,
-      y: 250,
+      y: canvas.height - 40,
       width: 40,
       height: 40,
       dy: 0,
-      jumpForce: 12, // Use the preferred jump mechanics
-      gravity: 0.4,  // Use the preferred gravity
+      jumpForce: 12,
+      gravity: 0.4,
       isJumping: false,
     };
+
     cactusRef.current = {
-      x: 800,
-      y: 250,
+      x: canvas.width,
+      y: canvas.height - 40,
       width: 20,
       height: 40,
       speed: 3,
     };
-    // Reset score
-    scoreRef.current = 0;
 
+    scoreRef.current = 0;
     setGameRunning(true);
   };
 
@@ -266,6 +280,5 @@ function Contact() {
     </div>
   );
 }
-
 
 export default Contact;
