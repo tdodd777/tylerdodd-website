@@ -12,6 +12,7 @@ import './styles/App.css';
 import Projects from './pages/Projects';
 import Project1 from './pages/project-articles/project1';
 import SourdoughBread from './pages/cooking-articles/sourdough-bread';
+import Zettelkasten from './pages/technology-articles/zettelkasten';
 
 function AppContent() {
   const { isDarkMode } = useTheme();
@@ -29,6 +30,7 @@ function AppContent() {
           <Route path="/interests/projects" element={<Projects />} />
           <Route path="/interests/projects/project1" element={<Project1 />} />
           <Route path="/interests/cooking/sourdough-bread" element={<SourdoughBread />} />
+          <Route path="/interests/technology/zettelkasten" element={<Zettelkasten />} />
         </Routes>
       </main>
       <Footer />

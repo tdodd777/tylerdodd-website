@@ -32,10 +32,10 @@
 }
 
 .project-logo {
-  width: 250px;
-  height: 300px;
+  width: 600px;
+  height: 450px;
   object-fit: contain;
-  border-radius: 15px; /* This adds rounded corners */
+  border-radius: 15px;
 }
 
 .project-main-image {
@@ -43,7 +43,9 @@
   max-height: 400px;
   object-fit: cover;
   margin-bottom: 20px;
-  border-radius: 15px; /* This adds rounded corners */
+  border-radius: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .author, .date-time, .read-time {

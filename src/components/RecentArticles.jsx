@@ -7,13 +7,20 @@ const getRecentArticles = () => {
   return [
     {
       id: 1,
+      title: "Understanding Zettelkasten: A Smart Note-Taking System",
+      preview: "Explore the Zettelkasten method, a powerful system for organizing thoughts and creating knowledge connections.",
+      image: "/images/articles/technology/obsidian-logo.jpg",
+      link: "/interests/technology/zettelkasten"
+    },
+    {
+      id: 2,
       title: "Baking the Perfect Sourdough Bread",
       preview: "Learn the secrets to creating a delicious sourdough loaf at home.",
       image: "/images/articles/cooking/sourdough-bread/sourdough-cooked.jpg",
       link: "/interests/cooking/sourdough-bread"
     },
     {
-      id: 2,
+      id: 3,
       title: "Building My Website",
       preview: "Technologies, Challenges, and Solutions in creating this website",
       image: "/images/articles/projects/project1-logo.jpg",
