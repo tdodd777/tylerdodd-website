@@ -148,7 +148,7 @@ const Project1 = () => {
 
       <section id="ai-tools" className="article-section">
         <h2>6. AI Tools for Development</h2>
-        <h3>ChatGPT 4.0, io mini, io Preview</h3>
+        <h3>ChatGPT 4.0, 01 mini, 01 Preview</h3>
         <p>
           GPT is king, plain and simple. I DO NOT know how to code (beyond incredibly beginner-level stuff). I can get by as needed and was able to stand up a very basic HTML/CSS site. Then I used GPT to overhaul the whole thing and really let it take shape. The real challenge most times wasn't coding; it was prompt engineering to ensure I could clearly convey what I wanted and needed to happen in my code.
         </p>

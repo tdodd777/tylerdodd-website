@@ -133,3 +133,18 @@
 .article-section img {
   border-radius: 15px;
 }
+
+.rounded-image {
+  border-radius: 15px; /* Adjust the value as needed */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0; /* Adjust spacing as needed */
+}
+
+.image-container img {
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+}

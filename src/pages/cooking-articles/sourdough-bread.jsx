@@ -9,13 +9,12 @@ const SourdoughBread = () => {
       <header className="article-header">
         <h1>Baking the Perfect Sourdough Bread</h1>
         <img src={sourdoughBreadImage} alt="Sourdough Bread" className="project-main-image" />
+        <section className="article-meta">
+          <p className="date-time">Sunday, October 6, 2024 11:16 AM</p>
+          <p className="author">Author: Tyler Dodd</p>
+          <p className="read-time">Estimated Read Time: 10 minutes</p>
+        </section>
       </header>
-
-      <section className="article-meta">
-        <p className="date-time">Sunday, October 6, 2024 11:16 AM</p>
-        <p className="author">Author: Tyler Dodd</p>
-        <p className="read-time">Estimated Read Time: 10 minutes</p>
-      </section>
 
       <section className="article-content">
         <p>When I moved to Chicago, I had a lot of free time on my hands, so I decided to take up sourdough bread baking. I already enjoyed cooking, so adding bread baking seemed like a natural skill to learn. Initially, I started with a simple no-knead recipe, but quickly transitioned to the one outlined here by Joshua Weissman. I've made a few small modifications to fit my needs, but this is essentially his recipe, and all credit is due to him! You can find more of his fantastic recipes at <a href="https://www.joshuaweissman.com/">Joshua Weissman's website</a>.</p>
